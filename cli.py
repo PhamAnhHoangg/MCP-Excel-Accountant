@@ -32,7 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     for name, helptext in [("check", "check errors + company conventions"), ("recalc", "recalculate formulas (needs LibreOffice)")]:
         p = sub.add_parser(name, help=helptext); p.add_argument("file")
     p = sub.add_parser("open", help="open a workbook in Excel / LibreOffice / default")
-    p.add_argument("file"); p.add_argument("--app", default="default", choices=["default", "excel", "libreoffice"])
+    p.add_argument("file"); p.add_argument("--app", default="auto", choices=["auto", "default", "excel", "libreoffice"])
     p = sub.add_parser("new-full", help="build the 13-tab company model")
     p.add_argument("file"); p.add_argument("--entity", default=""); p.add_argument("--open", action="store_true")
     p = sub.add_parser("new-module", help="build a catalog module workbook")

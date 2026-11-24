@@ -132,6 +132,24 @@ def test_open_workbook():
         sp.Popen = orig
 
 
+def test_open_auto_picks_installed_program():
+    import subprocess as sp
+    s.create_workbook("auto-test.xlsx", sheets={"Canvas": [["a"]], "Assumptions": [["b"]]}) if "auto-test.xlsx" not in s.list_workbooks() else None
+    import os as _os
+    _os.environ.setdefault("DISPLAY", ":0")
+    orig_find, orig_popen = s._find_program, sp.Popen
+    sp.Popen = lambda *a, **k: None
+    try:
+        s._find_program = lambda app: "/x/soffice" if app == "libreoffice" else None   # only LibreOffice installed
+        assert s.open_workbook("auto-test.xlsx")["opened_with"] == "libreoffice"
+        assert s.open_workbook("auto-test.xlsx", "excel")["opened_with"] == "libreoffice"  # forced but missing -> fallback
+        s._find_program = lambda app: "/x/" + app                                           # both installed
+        assert s.open_workbook("auto-test.xlsx")["opened_with"] == "excel"
+        assert s.open_workbook("auto-test.xlsx", "libreoffice")["opened_with"] == "libreoffice"
+    finally:
+        s._find_program, sp.Popen = orig_find, orig_popen
+
+
 def test_cli():
     import cli
     assert cli.main(["info"]) == 0

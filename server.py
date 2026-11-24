@@ -24,7 +24,7 @@ try:  # mcp >= 2
 except ImportError:  # mcp 1.x
     from mcp.server.fastmcp import FastMCP as _Server
 
-VERSION = "0.8.4"
+VERSION = "0.8.5"
 ROOT = Path(os.environ.get("EXCEL_MCP_ROOT", Path.home() / "excel-workspace")).expanduser().resolve()
 BACKUP_DIR = ROOT / ".backups"
 AUDIT_LOG = ROOT / ".audit.jsonl"
@@ -386,37 +386,81 @@ def check_workbook(file: str) -> dict:
             "hint": "uncached = file never recalculated; run recalculate()" if uncached else "ok"}
 
 
+def _find_program(app: str) -> str | None:
+    """Locate Excel or LibreOffice on this computer. Returns an executable/app name or None."""
+    plat = sys.platform
+    if app == "libreoffice":
+        exe = shutil.which("soffice") or shutil.which("libreoffice")
+        if exe:
+            return exe
+        if plat.startswith("win"):
+            for base in (os.environ.get("ProgramFiles", r"C:\Program Files"), os.environ.get("ProgramFiles(x86)", r"C:\Program Files (x86)")):
+                c = Path(base) / "LibreOffice" / "program" / "soffice.exe"
+                if c.exists():
+                    return str(c)
+        if plat == "darwin" and Path("/Applications/LibreOffice.app").exists():
+            return "LibreOffice"
+        return None
+    # excel
+    if plat.startswith("win"):
+        try:
+            import winreg
+            for root in (winreg.HKEY_LOCAL_MACHINE, winreg.HKEY_CURRENT_USER):
+                try:
+                    with winreg.OpenKey(root, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\excel.exe") as k:
+                        return winreg.QueryValue(k, None)
+                except OSError:
+                    continue
+        except ImportError:
+            pass
+        return shutil.which("excel")
+    if plat == "darwin":
+        return "Microsoft Excel" if Path("/Applications/Microsoft Excel.app").exists() else None
+    return None  # Excel does not exist on Linux
+
+
 @mcp.tool()
-def open_workbook(file: str, app: str = "default") -> dict:
-    """Open a workbook from the workspace in the user's own spreadsheet program (Excel, LibreOffice, or the system default).
-    Works only when this server runs on the user's computer (Claude Desktop). `app`: "default", "excel" or "libreoffice".
-    Never writes to the file. If Excel already has it open, save and close it first or use File > Reload."""
+def open_workbook(file: str, app: str = "auto") -> dict:
+    """Open a workbook from the workspace on the user's own computer.
+    `app`: "auto" (default) = Excel if installed, otherwise LibreOffice, otherwise the system default;
+    or force "excel", "libreoffice" or "default". If the forced program is missing, falls back the same way.
+    Works only when this server runs on the user's computer. Never writes to the file.
+    If the file is already open in a program, save and close it first or use File > Reload."""
     p = _path(file)
     app = app.lower().strip()
-    if app not in {"default", "excel", "libreoffice"}:
-        raise ValueError('app must be "default", "excel" or "libreoffice"')
+    if app not in {"auto", "default", "excel", "libreoffice"}:
+        raise ValueError('app must be "auto", "default", "excel" or "libreoffice"')
     plat = sys.platform
+    if not plat.startswith(("win", "darwin")) and not (os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY")):
+        return {"ok": False, "reason": "No screen on this machine (cloud or headless). Run this server on the user's own computer."}
+    # Decide which program to use.
+    order = {"auto": ["excel", "libreoffice"], "excel": ["excel", "libreoffice"],
+             "libreoffice": ["libreoffice", "excel"], "default": []}[app]
+    chosen, exe = "default", None
+    for cand in order:
+        exe = _find_program(cand)
+        if exe:
+            chosen = cand
+            break
     try:
-        if plat.startswith("win"):
-            if app == "default":
+        if exe is None:  # nothing found (or "default" requested): let the system choose
+            if plat.startswith("win"):
                 os.startfile(str(p))  # type: ignore[attr-defined]
+            elif plat == "darwin":
+                subprocess.Popen(["open", str(p)])
             else:
-                exe = {"excel": "excel", "libreoffice": "soffice"}[app]
-                subprocess.Popen(["cmd", "/c", "start", "", exe, str(p)])
+                opener = shutil.which("xdg-open")
+                if not opener:
+                    return {"ok": False, "reason": "No program found to open the file (install LibreOffice or xdg-utils)."}
+                subprocess.Popen([opener, str(p)])
         elif plat == "darwin":
-            cmd = ["open"] if app == "default" else ["open", "-a", {"excel": "Microsoft Excel", "libreoffice": "LibreOffice"}[app]]
-            subprocess.Popen(cmd + [str(p)])
+            subprocess.Popen(["open", "-a", exe, str(p)])
         else:
-            if not (os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY")):
-                return {"ok": False, "reason": "No screen on this machine (cloud or headless). Run this server on the user's own computer."}
-            exe = shutil.which("soffice") or shutil.which("libreoffice") if app in {"libreoffice", "excel"} else shutil.which("xdg-open")
-            if not exe:
-                return {"ok": False, "reason": "No program found to open the file (install LibreOffice or xdg-utils)."}
             subprocess.Popen([exe, str(p)])
     except Exception as e:  # launcher missing, app not installed, etc.
         return {"ok": False, "reason": f"Could not start the program: {e}"}
-    _audit("open_workbook", file, {"app": app})
-    return {"ok": True, "file": str(p), "app": app}
+    _audit("open_workbook", file, {"requested": app, "opened_with": chosen})
+    return {"ok": True, "file": str(p), "requested": app, "opened_with": chosen}
 
 
 @mcp.tool()

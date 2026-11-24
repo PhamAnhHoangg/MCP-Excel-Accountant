@@ -1,6 +1,6 @@
 {
   "name": "excel-accounting",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "Excel MCP server and accounting skill: reconcile, aging, cost analysis, workbook audit",
   "skills": "./skills",
   "mcpServers": {

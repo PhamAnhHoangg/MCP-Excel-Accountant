@@ -1,4 +1,4 @@
-# Excel Accounting MCP (v0.8.4)
+# Excel Accounting MCP (v0.8.5)
 
 Connects Claude to your company's Excel files for accounting work. Safe by design:
 - Only touches files inside ONE workspace folder (`EXCEL_MCP_ROOT`, default `~/excel-workspace`).
@@ -40,7 +40,7 @@ Then in any terminal: `cl Excel` starts that profile's Claude Code in the same w
 Inside the repo folder in PowerShell: `powershell -ExecutionPolicy Bypass -File .\setup_windows.ps1` installs the packages, creates `~/excel-workspace`, runs the tests and prints the exact connection commands for Claude Code and Claude Desktop. Without any Claude app: `python cli.py new-full SH-Window-model.xlsx --open` (also `info`, `list`, `modules`, `new-module <file> <ID>`, `check`, `recalc`, `open --app excel|libreoffice`). Always run commands from inside the repo folder (`cd C:\Users\<you>\MCP-Excel-Accountant`).
 
 ## Opening files on your own computer
-This server runs LOCALLY (started by Claude Desktop), so it can reach the software on your machine. `open_workbook(file, app)` opens a workspace file in Excel, LibreOffice or your default program (Windows `start`, Mac `open`, Linux `xdg-open`). It never writes to the file. Typical flow: Claude builds or edits the file in your workspace folder, then calls `open_workbook`; you read and edit it in your own software. If Excel already has the file open, close it first or use File > Reload. In a cloud session there is no screen, so the tool returns a clear "not available" message.
+This server runs LOCALLY (started by Claude Desktop), so it can reach the software on your machine. `open_workbook(file, app)` opens a workspace file. Default `app="auto"` checks what is installed: Excel first, otherwise LibreOffice, otherwise your system default. You can force `excel`, `libreoffice` or `default`; a missing program falls back automatically. It never writes to the file. Typical flow: Claude builds or edits the file in your workspace folder, then calls `open_workbook`; you read and edit it in your own software. If Excel already has the file open, close it first or use File > Reload. In a cloud session there is no screen, so the tool returns a clear "not available" message.
 
 ## Privacy: company data stays out of the repository
 Real company, brand and supplier names and business detail live ONLY in `company_profile.json` (git-ignored; see `company_profile.py`). The repository holds generic placeholders written as `@B1@`, `@B2@`, `@B3@`, `@SUP@`; the server replaces them with the private profile's names when it builds a workbook. Pictures, workbooks, zips and backups are git-ignored too. `python tests/test_privacy.py` fails if a real name from your profile appears in any file git would publish. Never share `company_profile.json`; back it up yourself.
@@ -49,6 +49,7 @@ Real company, brand and supplier names and business detail live ONLY in `company
 `git config core.hooksPath .githooks` makes git run `tests/test_privacy.py` before every commit and refuse the commit if `company_profile.json` is staged or a name from your private profile appears in any file that would be published. (`git commit --no-verify` skips it; do not use that.)
 
 ## Changelog
+- **0.8.5**: `open_workbook` now defaults to `auto`: Excel if installed, otherwise LibreOffice, otherwise the system default (a forced program that is missing falls back too).
 - **0.8.4**: `.githooks/pre-commit` privacy guard.
 - **0.8.3**: Privacy: real names and business detail moved to the private `company_profile.json`; generic placeholders in code, catalog, skill and docs; `tests/test_privacy.py`; `.gitignore` covers profile, workbooks, pictures, zips.
 - **0.8.2**: "Customers & Strategy" tab rebuilt to the company layout: three columns (Item | Draft suggestion | Fill in after customer interviews, yellow), pink section bars BRAND / CUSTOMER PROFILE / STRATEGY / INTERNAL, row heights fitted to text.
