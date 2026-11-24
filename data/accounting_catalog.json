@@ -1,0 +1,1753 @@
+{
+ "version": "1.0",
+ "areas": {
+  "A": "Planning & business model",
+  "B": "Projects & contracts (@B1@)",
+  "C": "Procurement, inventory & factory",
+  "D": "Export (@B2@)",
+  "E": "Group: 3 entities & owner",
+  "F": "Tax & compliance (Vietnam)",
+  "G": "Payroll & payouts",
+  "H": "Cash, funding & owner payouts",
+  "I": "Reporting & control"
+ },
+ "modules": [
+  {
+   "id": "A01",
+   "area": "Planning & business model",
+   "name": "Business model canvas & unit economics",
+   "why": "One page: who pays, for what, how much margin per unit.",
+   "numbers": [
+    "price per m2/set",
+    "direct cost per m2/set",
+    "gross margin %"
+   ],
+   "watch": [
+    "margin by brand differs: contractor vs system licensor vs exporter"
+   ],
+   "sheets": [
+    "Canvas",
+    "Assumptions",
+    "Unit economics"
+   ],
+   "scenarios": [
+    "Raise material cost 8% and keep price: what is the new margin per m2?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "A02",
+   "area": "Planning & business model",
+   "name": "Assumptions master (prices, costs, FX, tax rates)",
+   "why": "Single source of truth; every other file reads from it.",
+   "numbers": [
+    "price list",
+    "cost list",
+    "FX rates (USD, EUR, CAD, AUD)",
+    "tax rates with source+date"
+   ],
+   "watch": [
+    "tax rates change yearly: store source and date next to each rate",
+    "Label every price and cost as VAT-inclusive or VAT-exclusive",
+    "Keep a change log: who changed which rate, when, why"
+   ],
+   "sheets": [
+    "Assumptions",
+    "Rates & sources",
+    "Change log"
+   ],
+   "scenarios": [
+    "Change the VAT rate cell: which sheets move?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "A03",
+   "area": "Planning & business model",
+   "name": "Sales policy: channels, commission, discount",
+   "why": "Commission and discount are real costs that shrink margin.",
+   "numbers": [
+    "commission %",
+    "discount limits",
+    "channel split of revenue"
+   ],
+   "watch": [
+    "commission paid to individuals is taxable income (check withholding)"
+   ],
+   "sheets": [
+    "Policy",
+    "Commission calc",
+    "Margin after commission"
+   ],
+   "scenarios": [
+    "Discount 5% more to win a bid: how many extra projects needed to recover margin?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "A04",
+   "area": "Planning & business model",
+   "name": "Fixed-cost budget & monthly overhead",
+   "why": "Fixed cost decides break-even and the cash you need each month.",
+   "numbers": [
+    "rent",
+    "salaries",
+    "insurance",
+    "depreciation",
+    "interest",
+    "marketing"
+   ],
+   "watch": [
+    "fixed cost must be covered even in months with no sales",
+    "Employer insurance and union fee (about 23.5% of insured salary) belong in fixed cost",
+    "Spread yearly costs (audit, licences, insurance premiums) monthly so no month surprises you"
+   ],
+   "sheets": [
+    "Fixed costs",
+    "Monthly budget",
+    "Funding need"
+   ],
+   "scenarios": [
+    "No sales for 2 months: how much cash is burned?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "A05",
+   "area": "Planning & business model",
+   "name": "Sales forecast & scenarios (best / base / worst)",
+   "why": "Plans must survive a bad quarter.",
+   "numbers": [
+    "new customers/month",
+    "win rate",
+    "average ticket",
+    "cycle time"
+   ],
+   "watch": [
+    "revenue timing vs cash timing"
+   ],
+   "sheets": [
+    "Forecast",
+    "Scenarios",
+    "Summary"
+   ],
+   "scenarios": [
+    "Win rate falls from 30% to 20%: which month does cash go negative?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "A06",
+   "area": "Planning & business model",
+   "name": "Break-even & pricing per m2 / per set",
+   "why": "Know the minimum price that still pays all costs.",
+   "numbers": [
+    "variable cost/unit",
+    "fixed cost/month",
+    "target margin"
+   ],
+   "watch": [
+    "price quoted below full cost looks like a sale but loses money",
+    "A price below full cost looks like a sale but is paid for later by a cash shortage",
+    "Include warranty reserve and finance cost in the minimum price"
+   ],
+   "sheets": [
+    "Inputs",
+    "Break-even",
+    "Price ladder"
+   ],
+   "scenarios": [
+    "Fixed cost doubles: how many m2 per month to break even?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "B01",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Quotation / BOQ costing per m2",
+   "why": "Build the price from real quantities: profile kg, glass m2, hardware, labour, install, overhead, margin.",
+   "numbers": [
+    "profile kg/m2",
+    "glass m2",
+    "hardware sets",
+    "labour hours",
+    "install cost",
+    "overhead %",
+    "margin %"
+   ],
+   "watch": [
+    "waste/cutting loss must be in the cost",
+    "VAT shown separately on quotes",
+    "Set a quote validity period: aluminium and euro prices move",
+    "Show VAT separately (10%, or the reduced rate only if the item qualifies - verify)",
+    "Add contingency for installation risk and site delays"
+   ],
+   "sheets": [
+    "Inputs",
+    "BOQ",
+    "Cost build-up",
+    "Quote summary"
+   ],
+   "scenarios": [
+    "Aluminium price +10%: what is the quote increase to hold margin?"
+   ],
+   "priority": 1,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B02",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Project job costing & P&L per project",
+   "why": "Shows which projects make money after ALL costs (not just materials).",
+   "numbers": [
+    "contract value",
+    "material",
+    "labour",
+    "subcontract",
+    "install",
+    "site cost",
+    "warranty reserve"
+   ],
+   "watch": [
+    "cost overruns found late; allocate shared factory cost fairly",
+    "Allocate shared factory and site costs by a written rule",
+    "Book cost to the project when incurred, not when paid",
+    "Hold a warranty reserve per project"
+   ],
+   "sheets": [
+    "Project list",
+    "Cost ledger",
+    "Project P&L"
+   ],
+   "scenarios": [
+    "Project delayed 2 months: how much extra site cost and finance cost?"
+   ],
+   "priority": 1,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B03",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Billing schedule & milestone payments",
+   "why": "Advance, progress and acceptance payments decide your cash, not the contract total.",
+   "numbers": [
+    "advance %",
+    "progress %",
+    "acceptance %",
+    "payment terms days"
+   ],
+   "watch": [
+    "issue the invoice at the right time (invoice timing penalties exist from Jan 2026)",
+    "Issue the invoice at the milestone or acceptance date: wrong timing is penalised from 16 Jan 2026",
+    "(verify) VAT timing on advance payments",
+    "Cash arrives by milestone, so forecast cash from this schedule, not from contract value"
+   ],
+   "sheets": [
+    "Contract terms",
+    "Billing schedule",
+    "Cash timing"
+   ],
+   "scenarios": [
+    "Client pays 30 days late: what happens to cash in the month and to profit?"
+   ],
+   "priority": 1,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B04",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Retention / warranty holdback & release tracker",
+   "why": "Part of the contract is held until warranty ends; it is profit you have not collected yet.",
+   "numbers": [
+    "retention %",
+    "release date",
+    "guarantee instead of cash?"
+   ],
+   "watch": [
+    "(verify) terms are contract-specific; record per contract"
+   ],
+   "sheets": [
+    "Retention list",
+    "Release calendar"
+   ],
+   "scenarios": [
+    "Retention is 5% on 20 projects: how much cash is locked for 12 months?"
+   ],
+   "priority": 2,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B05",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Receivable aging & collection",
+   "why": "Late customers are the #1 reason profitable contractors run out of cash.",
+   "numbers": [
+    "invoice date",
+    "due date",
+    "amount",
+    "customer"
+   ],
+   "watch": [
+    "bad-debt provisions: tax deductibility needs documents (verify rules)",
+    "Chase before 30 days overdue, escalate at 60, stop work at 90 (set your own rule)",
+    "(verify) bad-debt provision is deductible only with required legal documents",
+    "Retention is not overdue until its release date"
+   ],
+   "sheets": [
+    "Invoices",
+    "Aging",
+    "Top overdue",
+    "Collection log"
+   ],
+   "scenarios": [
+    "A 90+ day invoice of 500m: what is the cash and profit impact if written off?"
+   ],
+   "priority": 1,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B06",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Subcontractor & installation crew payments",
+   "why": "Crew payments are large, often cash, and need documents.",
+   "numbers": [
+    "rate per m2/day",
+    "advance",
+    "completion %",
+    "acceptance"
+   ],
+   "watch": [
+    "(verify) withholding when paying individuals; non-cash payment rules for large invoices"
+   ],
+   "sheets": [
+    "Crew list",
+    "Work done",
+    "Payment due",
+    "Documents checklist"
+   ],
+   "scenarios": [
+    "Crew rate +10%: effect on project margin?"
+   ],
+   "priority": 2,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B07",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Bid bond & performance guarantee tracker",
+   "why": "Guarantees tie up cash or credit lines and cost fees.",
+   "numbers": [
+    "guarantee amount",
+    "fee %",
+    "expiry",
+    "cash margin deposit"
+   ],
+   "watch": [
+    "expired guarantee not returned = money stuck"
+   ],
+   "sheets": [
+    "Guarantees",
+    "Fees",
+    "Expiry calendar"
+   ],
+   "scenarios": [
+    "5 bids at once need bonds: how much credit line is used?"
+   ],
+   "priority": 2,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B08",
+   "area": "Projects & contracts (@B1@)",
+   "name": "WIP & revenue recognition",
+   "why": "Decides when profit is booked: by % complete or at handover. Accounting vs tax may differ.",
+   "numbers": [
+    "cost to date",
+    "estimated total cost",
+    "% complete",
+    "billed to date"
+   ],
+   "watch": [
+    "(verify) tax timing of revenue vs accounting timing"
+   ],
+   "sheets": [
+    "Projects",
+    "% complete",
+    "Over/under billing"
+   ],
+   "scenarios": [
+    "Estimated cost rises 10% mid-project: how does booked profit change?"
+   ],
+   "priority": 2,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B09",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Warranty provision & after-sales cost",
+   "why": "Warranty claims are a future cost caused by today's sales.",
+   "numbers": [
+    "claim rate %",
+    "avg claim cost",
+    "warranty years"
+   ],
+   "watch": [
+    "(verify) provision deductibility conditions"
+   ],
+   "sheets": [
+    "Claims history",
+    "Provision calc"
+   ],
+   "scenarios": [
+    "Claim rate doubles: what reserve do you need?"
+   ],
+   "priority": 3,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "B10",
+   "area": "Projects & contracts (@B1@)",
+   "name": "Contract risk register",
+   "why": "Penalty clauses, delay damages, price escalation, scope change.",
+   "numbers": [
+    "penalty %/day",
+    "price escalation clause?",
+    "payment security"
+   ],
+   "watch": [
+    "unrecoverable aluminium price rises if contract has no escalation clause"
+   ],
+   "sheets": [
+    "Contracts",
+    "Risks",
+    "Mitigation"
+   ],
+   "scenarios": [
+    "Aluminium +15% after signing and no escalation clause: loss per project?"
+   ],
+   "priority": 3,
+   "brands": "SHW",
+   "status": "planned"
+  },
+  {
+   "id": "C01",
+   "area": "Procurement, inventory & factory",
+   "name": "Material price tracker (aluminium, glass, hardware)",
+   "why": "Aluminium and EUR prices move; quotes go stale.",
+   "numbers": [
+    "supplier price",
+    "date",
+    "LME/market reference",
+    "FX"
+   ],
+   "watch": [
+    "price validity of quotes; FX on EUR hardware"
+   ],
+   "sheets": [
+    "Prices",
+    "Trend",
+    "Alerts"
+   ],
+   "scenarios": [
+    "Price rises 6% next month: which open quotes lose margin?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "C02",
+   "area": "Procurement, inventory & factory",
+   "name": "Purchase orders & supplier payables",
+   "why": "Know what you owe and when; protect early-payment discounts and supplier relations.",
+   "numbers": [
+    "PO",
+    "delivery",
+    "invoice",
+    "terms",
+    "paid"
+   ],
+   "watch": [
+    "VAT input deduction needs valid invoice and payment evidence (verify thresholds)",
+    "Match purchase order, delivery note and invoice before paying",
+    "Supplier invoice must be a valid e-invoice in the company name for VAT deduction",
+    "Compare early-payment discount with the cost of the cash"
+   ],
+   "sheets": [
+    "POs",
+    "Payables aging",
+    "Payment plan"
+   ],
+   "scenarios": [
+    "Suppliers shorten terms from 45 to 30 days: cash effect?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "C03",
+   "area": "Procurement, inventory & factory",
+   "name": "Inventory & stock count",
+   "why": "Stock is cash sitting on shelves; count differences are losses.",
+   "numbers": [
+    "opening",
+    "receipts",
+    "issues",
+    "closing",
+    "costing method"
+   ],
+   "watch": [
+    "stock loss deductibility needs documents (verify)"
+   ],
+   "sheets": [
+    "Items",
+    "Movements",
+    "Count vs book"
+   ],
+   "scenarios": [
+    "Slow stock of 300m for 6 months: carrying cost?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "C04",
+   "area": "Procurement, inventory & factory",
+   "name": "Cutting yield, scrap & recovery",
+   "why": "Profile cutting loss is a real cost; scrap sale is income with VAT rules.",
+   "numbers": [
+    "standard yield %",
+    "actual yield %",
+    "scrap kg",
+    "scrap price"
+   ],
+   "watch": [
+    "VAT treatment of scrap/by-products was clarified from 1 Jan 2026"
+   ],
+   "sheets": [
+    "Cutting plan",
+    "Yield",
+    "Scrap sales"
+   ],
+   "scenarios": [
+    "Yield drops 3 points: cost per m2?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "C05",
+   "area": "Procurement, inventory & factory",
+   "name": "Factory overhead & product costing",
+   "why": "Electricity, rent, supervisors, machine time must be allocated to products.",
+   "numbers": [
+    "overhead pool",
+    "allocation base",
+    "machine hours"
+   ],
+   "watch": [
+    "under-allocated overhead makes quotes too cheap"
+   ],
+   "sheets": [
+    "Overhead",
+    "Allocation",
+    "Product cost"
+   ],
+   "scenarios": [
+    "Factory utilisation falls 20%: cost per unit?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "C06",
+   "area": "Procurement, inventory & factory",
+   "name": "Fixed assets & depreciation register",
+   "why": "Machines and vehicles: depreciation is deductible only within rules.",
+   "numbers": [
+    "cost",
+    "useful life",
+    "method",
+    "in-service date"
+   ],
+   "watch": [
+    "(verify) depreciation limits for vehicles; minimum asset value; useful-life ranges"
+   ],
+   "sheets": [
+    "Assets",
+    "Depreciation",
+    "Disposals"
+   ],
+   "scenarios": [
+    "Buy a new CNC machine of 1.5bn: monthly depreciation and cash impact?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "C07",
+   "area": "Procurement, inventory & factory",
+   "name": "Imported hardware landed cost (@SUP@, EUR)",
+   "why": "True cost = price + freight + insurance + import duty + import VAT + customs fees + FX.",
+   "numbers": [
+    "EUR price",
+    "EUR/VND",
+    "freight",
+    "import duty %",
+    "import VAT %",
+    "clearance fees"
+   ],
+   "watch": [
+    "import VAT is cash out before sales; duty classification (HS code); FX loss",
+    "(verify) import duty depends on HS code and origin: confirm the rate for aluminium-system hardware from Italy",
+    "Import VAT paid at customs is deductible only with complete documents",
+    "Customs exchange rate vs bank rate: the difference is an FX cost",
+    "Freight, insurance and broker fees belong in landed cost"
+   ],
+   "sheets": [
+    "Shipment inputs",
+    "Landed cost",
+    "Cost per unit"
+   ],
+   "scenarios": [
+    "EUR rises 4% against VND: effect on unit cost and price list?"
+   ],
+   "priority": 1,
+   "brands": "ITA",
+   "status": "planned"
+  },
+  {
+   "id": "C08",
+   "area": "Procurement, inventory & factory",
+   "name": "Capacity vs fixed-cost absorption",
+   "why": "Idle capacity is cost without revenue.",
+   "numbers": [
+    "capacity",
+    "utilisation",
+    "fixed cost"
+   ],
+   "watch": [
+    "do not accept low-margin jobs just to fill capacity without checking contribution"
+   ],
+   "sheets": [
+    "Capacity",
+    "Utilisation",
+    "Absorption"
+   ],
+   "scenarios": [
+    "Utilisation 60% vs 85%: unit cost difference?"
+   ],
+   "priority": 3,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "D01",
+   "area": "Export (@B2@)",
+   "name": "Export order costing & margin per container",
+   "why": "Margin in USD after freight, insurance, packing, duties and FX.",
+   "numbers": [
+    "FOB/CIF/DDP price",
+    "freight",
+    "packing",
+    "insurance",
+    "FX"
+   ],
+   "watch": [
+    "Incoterms decide who pays freight/duty; margin must be per container",
+    "Incoterms (FOB / CIF / DDP) decide who pays freight, insurance and duty",
+    "Margin must include packing, container loading, bank charges and rebates",
+    "Costs are in VND/EUR but revenue is in USD/CAD/AUD: show the FX effect"
+   ],
+   "sheets": [
+    "Order",
+    "Cost to serve",
+    "Margin per container"
+   ],
+   "scenarios": [
+    "Freight rises 25%: is a CIF order still profitable?"
+   ],
+   "priority": 1,
+   "brands": "EXP",
+   "status": "planned"
+  },
+  {
+   "id": "D02",
+   "area": "Export (@B2@)",
+   "name": "FX exposure & gains/losses",
+   "why": "You sell in USD/CAD/AUD, cost in VND/EUR: FX moves profit.",
+   "numbers": [
+    "open receivables by currency",
+    "open payables by currency",
+    "rates"
+   ],
+   "watch": [
+    "realised vs unrealised FX; year-end revaluation (verify tax treatment)",
+    "Record the rate at invoice date, payment date and year-end (revaluation)",
+    "Show FX gain/loss separately from operating profit",
+    "Match USD costs with USD revenue where possible (natural hedge)"
+   ],
+   "sheets": [
+    "Exposure",
+    "Gain/loss",
+    "Hedge ideas"
+   ],
+   "scenarios": [
+    "VND strengthens 3%: effect on USD receivables?"
+   ],
+   "priority": 1,
+   "brands": "EXP",
+   "status": "planned"
+  },
+  {
+   "id": "D03",
+   "area": "Export (@B2@)",
+   "name": "Export VAT 0% & VAT refund tracker",
+   "why": "Exports are 0% VAT; input VAT can be refunded but needs complete documents and time.",
+   "numbers": [
+    "input VAT on export costs",
+    "export value",
+    "documents status",
+    "refund claimed/received"
+   ],
+   "watch": [
+    "refund conditions and documents changed in 2025-2026; cash is stuck until refund",
+    "(verify) 0% VAT needs: sales contract, commercial invoice, customs declaration and bank payment proof",
+    "Late or missing documents mean the input VAT stays as a cost",
+    "The supplier of your materials must have declared VAT on its invoices for you to be refunded",
+    "Refund can take months: show locked cash in the cash-flow file"
+   ],
+   "sheets": [
+    "Export invoices",
+    "Input VAT",
+    "Documents",
+    "Refund status"
+   ],
+   "scenarios": [
+    "Refund takes 6 months instead of 2: how much cash is locked?"
+   ],
+   "priority": 1,
+   "brands": "EXP",
+   "status": "planned"
+  },
+  {
+   "id": "D04",
+   "area": "Export (@B2@)",
+   "name": "Customs & export document checklist",
+   "why": "Missing or inconsistent documents block shipment, refund and payment.",
+   "numbers": [
+    "contract",
+    "invoice",
+    "packing list",
+    "customs declaration",
+    "bank payment proof",
+    "C/O"
+   ],
+   "watch": [
+    "document names/numbers must match across set"
+   ],
+   "sheets": [
+    "Shipments",
+    "Checklist",
+    "Exceptions"
+   ],
+   "scenarios": [
+    "Packing list weight differs from invoice: what documents break?"
+   ],
+   "priority": 2,
+   "brands": "EXP",
+   "status": "planned"
+  },
+  {
+   "id": "D05",
+   "area": "Export (@B2@)",
+   "name": "Destination tariffs & trade remedies tracker",
+   "why": "Buyer-country duties can wipe out your price advantage.",
+   "numbers": [
+    "HS code",
+    "duty rate",
+    "anti-dumping/countervailing status",
+    "origin rules"
+   ],
+   "watch": [
+    "(verify) US additional tariffs; AD/CVD case outcomes; Canada/Australia/Cambodia rules"
+   ],
+   "sheets": [
+    "Markets",
+    "Duty table",
+    "Alerts"
+   ],
+   "scenarios": [
+    "US adds 10% duty: new price needed to keep margin?"
+   ],
+   "priority": 2,
+   "brands": "EXP",
+   "status": "planned"
+  },
+  {
+   "id": "D06",
+   "area": "Export (@B2@)",
+   "name": "Foreign buyer credit risk, deposits & L/C",
+   "why": "Foreign customers can pay late or not at all, and recovery is hard.",
+   "numbers": [
+    "deposit %",
+    "payment terms",
+    "L/C fees",
+    "credit limit"
+   ],
+   "watch": [
+    "use deposits, L/C or credit insurance for new buyers"
+   ],
+   "sheets": [
+    "Buyers",
+    "Exposure",
+    "Overdue"
+   ],
+   "scenarios": [
+    "A buyer with 200k USD overdue 90 days: provision and cash?"
+   ],
+   "priority": 2,
+   "brands": "EXP",
+   "status": "planned"
+  },
+  {
+   "id": "D07",
+   "area": "Export (@B2@)",
+   "name": "Distributor / agent commission & rebate",
+   "why": "Retail channel (e.g. home-improvement chains) demands rebates, returns allowances.",
+   "numbers": [
+    "rebate %",
+    "returns %",
+    "marketing fund",
+    "commission"
+   ],
+   "watch": [
+    "rebates reduce net revenue; record them accurately"
+   ],
+   "sheets": [
+    "Channel terms",
+    "Rebates",
+    "Net margin"
+   ],
+   "scenarios": [
+    "Chain asks 3% rebate: net margin?"
+   ],
+   "priority": 3,
+   "brands": "EXP",
+   "status": "planned"
+  },
+  {
+   "id": "E01",
+   "area": "Group: 3 entities & owner",
+   "name": "Intercompany transactions & reconciliation",
+   "why": "@B1@ buys from @B3@; @B3@ may sell to @B2@. Both sides must match.",
+   "numbers": [
+    "sales between entities",
+    "payables/receivables",
+    "price basis"
+   ],
+   "watch": [
+    "unmatched intercompany balances = errors and audit questions",
+    "Same price, date and amount in both companies' books",
+    "Month-end cut-off: delivered vs invoiced",
+    "(verify) VAT invoice is required even between related companies"
+   ],
+   "sheets": [
+    "Transactions",
+    "Matching",
+    "Differences"
+   ],
+   "scenarios": [
+    "@B3@ invoices 1bn but @B1@ recorded 900m: where is the gap?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "E02",
+   "area": "Group: 3 entities & owner",
+   "name": "Transfer pricing & related-party disclosure",
+   "why": "Related companies must trade at arm's-length prices and disclose.",
+   "numbers": [
+    "related-party sales/purchases",
+    "margin benchmark",
+    "documents"
+   ],
+   "watch": [
+    "(verify) disclosure forms and thresholds; owner-controlled entities are related parties"
+   ],
+   "sheets": [
+    "Related parties",
+    "Pricing test",
+    "Disclosure checklist"
+   ],
+   "scenarios": [
+    "@B3@ sells to @B1@ at a 5% discount versus others: any tax risk?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "E03",
+   "area": "Group: 3 entities & owner",
+   "name": "Consolidated group view & owner dashboard",
+   "why": "Owner needs one view across 3 entities with intercompany removed.",
+   "numbers": [
+    "P&L per entity",
+    "cash per entity",
+    "intercompany elimination"
+   ],
+   "watch": [
+    "do not double count intercompany revenue"
+   ],
+   "sheets": [
+    "Entity P&L",
+    "Eliminations",
+    "Group summary"
+   ],
+   "scenarios": [
+    "Remove intercompany: what is real group revenue?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "E04",
+   "area": "Group: 3 entities & owner",
+   "name": "Licence/royalty & foreign-payment tax",
+   "why": "Payments to foreign parties (royalty, licence, services) may trigger foreign contractor tax and treaty questions.",
+   "numbers": [
+    "payment type",
+    "amount",
+    "withholding rate",
+    "treaty basis"
+   ],
+   "watch": [
+    "(verify) foreign contractor tax on payments to the Italian group and DTA relief documents"
+   ],
+   "sheets": [
+    "Foreign payments",
+    "Tax calc",
+    "Documents"
+   ],
+   "scenarios": [
+    "Pay 20k EUR licence fee: what tax is due on top?"
+   ],
+   "priority": 2,
+   "brands": "ITA",
+   "status": "planned"
+  },
+  {
+   "id": "F01",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "VAT: input / output & invoice matching",
+   "why": "Monthly or quarterly VAT: output minus deductible input; every input invoice must be valid.",
+   "numbers": [
+    "output VAT",
+    "input VAT",
+    "carry-forward",
+    "reduced-rate items"
+   ],
+   "watch": [
+    "valid invoice + payment evidence; temporary rate reduction through end of 2026 for eligible items (verify eligibility)",
+    "Reconcile the VAT return to the ledger every period",
+    "(verify) invoices from risky suppliers can lose the deduction",
+    "Input VAT on non-business use is not deductible"
+   ],
+   "sheets": [
+    "Sales invoices",
+    "Purchase invoices",
+    "VAT calc",
+    "Mismatches"
+   ],
+   "scenarios": [
+    "Supplier invoice issued but not declared by supplier: effect on your deduction?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "F02",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "CIT: quarterly provisional & annual finalisation",
+   "why": "Corporate income tax from 2025: tiered rates by revenue (conditions apply).",
+   "numbers": [
+    "accounting profit",
+    "non-deductible items",
+    "taxable income",
+    "rate",
+    "prepayments"
+   ],
+   "watch": [
+    "(verify) which rate your entity qualifies for; provisional payment accuracy; loss carry-forward",
+    "Check which revenue tier applies (based on prior-year revenue)",
+    "Add back fines, personal expenses, costs without valid invoices; (verify) limits on interest and depreciation",
+    "(verify) provisional payments must be close to the final tax to avoid late interest"
+   ],
+   "sheets": [
+    "P&L",
+    "Adjustments",
+    "CIT calc",
+    "Payments"
+   ],
+   "scenarios": [
+    "Revenue crosses 50bn: how much extra CIT next year?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "F03",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "Non-deductible expense & document audit",
+   "why": "Expenses without valid documents are added back to taxable income.",
+   "numbers": [
+    "expense list",
+    "document status",
+    "payment method"
+   ],
+   "watch": [
+    "(verify) non-cash payment threshold; invoices in company name; personal expenses",
+    "Invoices must be in the company name and match the payment",
+    "Review recurring risky items: entertainment, gifts, personal fuel",
+    "(verify) non-cash payment threshold for large invoices"
+   ],
+   "sheets": [
+    "Expenses",
+    "Document check",
+    "Add-back"
+   ],
+   "scenarios": [
+    "200m of expenses without invoices: extra CIT?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "F04",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "PIT withholding & annual finalisation",
+   "why": "Employee salary tax with new 2026 deductions and brackets; also commissions and crews.",
+   "numbers": [
+    "gross pay",
+    "insurance",
+    "personal deduction",
+    "dependents",
+    "taxable income"
+   ],
+   "watch": [
+    "new brackets and deductions apply to the 2026 tax year",
+    "Withhold on every pay run and finalise yearly",
+    "(verify) withholding on commissions and crew paid as individuals depends on contract type",
+    "Dependents must be registered before the deduction applies"
+   ],
+   "sheets": [
+    "Employees",
+    "PIT calc",
+    "Year-end"
+   ],
+   "scenarios": [
+    "Employee with 2 dependents earns 30m/month: PIT before and after the new law?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "F05",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "E-invoice compliance register",
+   "why": "Wrong timing, cancelled and adjusted invoices cause penalties.",
+   "numbers": [
+    "invoice no.",
+    "issue date",
+    "delivery/acceptance date",
+    "status"
+   ],
+   "watch": [
+    "invoice timing penalties updated from 16 Jan 2026"
+   ],
+   "sheets": [
+    "Invoices",
+    "Timing check",
+    "Cancelled/adjusted"
+   ],
+   "scenarios": [
+    "Invoice issued after delivery month: what is the risk?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "F06",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "Tax calendar & deadline tracker",
+   "why": "Missing a deadline costs penalties and interest.",
+   "numbers": [
+    "filing dates",
+    "payment dates",
+    "responsible person"
+   ],
+   "watch": [
+    "monthly/quarterly VAT, quarterly CIT, PIT, insurance, annual finalisations",
+    "Set each date from the tax authority calendar (verify current dates)",
+    "A missed deadline means penalty and late-payment interest",
+    "Name an owner and a backup for every filing"
+   ],
+   "sheets": [
+    "Calendar",
+    "Responsibilities",
+    "Reminders"
+   ],
+   "scenarios": [
+    "Which filings fall in the same week next month?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "F07",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "Tax losses, incentives & funds",
+   "why": "SME rates, new-company exemptions, science & technology fund, loss carry-forward.",
+   "numbers": [
+    "loss by year",
+    "eligible incentives",
+    "fund appropriation"
+   ],
+   "watch": [
+    "(verify) eligibility conditions; fund can be set aside up to 20% of taxable income under the new CIT law"
+   ],
+   "sheets": [
+    "Losses",
+    "Incentives",
+    "Fund"
+   ],
+   "scenarios": [
+    "A loss year followed by profit: tax saved from carry-forward?"
+   ],
+   "priority": 3,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "F08",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "Tax inspection readiness file",
+   "why": "A prepared folder cuts inspection stress and penalty risk.",
+   "numbers": [
+    "documents by tax type",
+    "contracts",
+    "bank statements"
+   ],
+   "watch": [
+    "keep evidence for VAT, CIT, PIT, transfer pricing"
+   ],
+   "sheets": [
+    "Checklist",
+    "Evidence index",
+    "Gaps"
+   ],
+   "scenarios": [
+    "Which 10 documents would you need first in an inspection?"
+   ],
+   "priority": 3,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "F09",
+   "area": "Tax & compliance (Vietnam)",
+   "name": "Other taxes & fees",
+   "why": "Licence fee, import duty, foreign contractor tax, land/property, environment fees.",
+   "numbers": [
+    "fee type",
+    "base",
+    "rate",
+    "due date"
+   ],
+   "watch": [
+    "business licence fee exemption from 2026 (verify scope); others to verify"
+   ],
+   "sheets": [
+    "Taxes & fees",
+    "Calendar"
+   ],
+   "scenarios": [
+    "Which fees apply to the factory site?"
+   ],
+   "priority": 3,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "G01",
+   "area": "Payroll & payouts",
+   "name": "Payroll with 3P / KPI",
+   "why": "Pay for Position, Person, Performance; ties salary to results.",
+   "numbers": [
+    "base pay",
+    "KPI weight",
+    "KPI result",
+    "allowances"
+   ],
+   "watch": [
+    "variable pay still counts for tax and insurance depending on how it is structured (verify base for insurance)",
+    "Structure matters: variable pay may or may not count for insurance (verify)",
+    "Cap KPI payouts to protect cash",
+    "Write the KPI formula into the policy or contract"
+   ],
+   "sheets": [
+    "Roster",
+    "3P calc",
+    "KPI",
+    "Payslip"
+   ],
+   "scenarios": [
+    "Sales KPI 80% vs 100%: pay and company cost difference?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "G02",
+   "area": "Payroll & payouts",
+   "name": "Insurance & union fee calculator with caps",
+   "why": "Employer pays about 23.5% on top of salary in 2026 (within caps); employee pays 10.5%.",
+   "numbers": [
+    "insured salary",
+    "caps",
+    "rates",
+    "regional minimum wage"
+   ],
+   "watch": [
+    "caps changed on 1 Jul 2026; minimum wage changes 1 Jan 2027",
+    "Employer pays about 23.5% and employee 10.5%, within caps",
+    "Caps changed on 1 Jul 2026 (base salary 2.53m): update every employee",
+    "Unemployment cap uses the regional minimum wage, not the base salary"
+   ],
+   "sheets": [
+    "Rates & caps",
+    "Per employee",
+    "Company total"
+   ],
+   "scenarios": [
+    "Hire 5 workers at 12m/month: total monthly employer cost?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "G03",
+   "area": "Payroll & payouts",
+   "name": "Bonus, commission & bid-win payout",
+   "why": "Technical bid-win bonuses and sales commissions are taxable pay and real cost.",
+   "numbers": [
+    "bonus pool",
+    "rate",
+    "eligibility",
+    "tax treatment"
+   ],
+   "watch": [
+    "include in PIT; decide whether part counts for insurance (verify)",
+    "Bonus is taxable income for the employee",
+    "(verify) whether the bonus counts for insurance depends on how it is structured",
+    "Cap the pool as a % of project gross profit and pay after cash is collected"
+   ],
+   "sheets": [
+    "Rules",
+    "Payout calc",
+    "Tax effect"
+   ],
+   "scenarios": [
+    "Win a 5bn bid: bonus cost and net to the employee?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "G04",
+   "area": "Payroll & payouts",
+   "name": "Overtime, night shift & factory pay",
+   "why": "Overtime premiums have special tax treatment; hours must be recorded.",
+   "numbers": [
+    "hours",
+    "premium %",
+    "night shift",
+    "piece rate"
+   ],
+   "watch": [
+    "(verify) exempt portion of overtime premium for PIT"
+   ],
+   "sheets": [
+    "Timesheet",
+    "OT calc",
+    "Cost"
+   ],
+   "scenarios": [
+    "Peak season +30 OT hours per worker: cost?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "G05",
+   "area": "Payroll & payouts",
+   "name": "13th-month / Tet bonus, severance & unused leave",
+   "why": "Year-end payouts need cash planning; unused-leave pay is now exempt from PIT.",
+   "numbers": [
+    "bonus rule",
+    "severance rule",
+    "leave balance"
+   ],
+   "watch": [
+    "unused annual-leave payment exempt from PIT under the new law"
+   ],
+   "sheets": [
+    "Accruals",
+    "Payout plan",
+    "Cash needed"
+   ],
+   "scenarios": [
+    "Tet bonus 1 month: how much cash must be saved by December?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "G06",
+   "area": "Payroll & payouts",
+   "name": "Headcount plan & cost per head",
+   "why": "Total cost per employee, not just salary.",
+   "numbers": [
+    "salary",
+    "insurance",
+    "union fee",
+    "equipment",
+    "training"
+   ],
+   "watch": [
+    "each new hire adds 23.5% employer cost on insured pay"
+   ],
+   "sheets": [
+    "Headcount",
+    "Cost per head",
+    "Plan"
+   ],
+   "scenarios": [
+    "Add 3 sales staff: break-even revenue needed?"
+   ],
+   "priority": 3,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "G07",
+   "area": "Payroll & payouts",
+   "name": "Labour contract & regional minimum wage check",
+   "why": "Salaries must not fall below regional minimums; they rose in Jan 2026 and again in Jan 2027.",
+   "numbers": [
+    "region",
+    "minimum wage",
+    "pay by employee"
+   ],
+   "watch": [
+    "check every salary against the minimum each year"
+   ],
+   "sheets": [
+    "Employees",
+    "Minimum check",
+    "Exceptions"
+   ],
+   "scenarios": [
+    "Minimum wage +7% in 2027: which employees fall below?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "H01",
+   "area": "Cash, funding & owner payouts",
+   "name": "Cash-flow: 13-week and 12-month",
+   "why": "Profit is not cash: timing of collection and payment decides survival.",
+   "numbers": [
+    "receipts by week",
+    "payments by week",
+    "opening balance",
+    "minimum cash"
+   ],
+   "watch": [
+    "tax payments, insurance, bonuses, import VAT are lumpy cash outflows",
+    "Include tax, insurance and bonus payment dates",
+    "Include import VAT outflows and VAT refund inflows",
+    "Show a minimum cash buffer in every week"
+   ],
+   "sheets": [
+    "Inputs",
+    "13-week",
+    "12-month",
+    "Alerts"
+   ],
+   "scenarios": [
+    "Which week is the lowest cash? What funding fills it?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "H02",
+   "area": "Cash, funding & owner payouts",
+   "name": "Working capital & credit line utilisation",
+   "why": "Receivables + inventory - payables = cash locked in operations.",
+   "numbers": [
+    "receivable days",
+    "inventory days",
+    "payable days",
+    "credit limit"
+   ],
+   "watch": [
+    "bank covenants and guarantee limits",
+    "Credit limit vs guarantees already issued",
+    "Check bank covenants, if any",
+    "Watch the gap between receivable days and payable days"
+   ],
+   "sheets": [
+    "Working capital",
+    "Credit line"
+   ],
+   "scenarios": [
+    "Customers pay 20 days later: how much extra credit is used?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "H03",
+   "area": "Cash, funding & owner payouts",
+   "name": "Loan & interest schedule",
+   "why": "Loan interest is deductible only within limits.",
+   "numbers": [
+    "principal",
+    "rate",
+    "term",
+    "repayment profile"
+   ],
+   "watch": [
+    "(verify) interest deductibility cap under current decrees"
+   ],
+   "sheets": [
+    "Loans",
+    "Schedule",
+    "Interest tax effect"
+   ],
+   "scenarios": [
+    "Rate +2%: monthly interest and profit?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "H04",
+   "area": "Cash, funding & owner payouts",
+   "name": "Owner payouts: salary, dividends, shareholder loans",
+   "why": "How the owner takes money out changes tax and cash.",
+   "numbers": [
+    "salary",
+    "dividend",
+    "loan to/from company"
+   ],
+   "watch": [
+    "(verify) PIT on dividends; shareholder loan interest and documentation",
+    "(verify) salary, dividend and shareholder loan are taxed differently",
+    "A shareholder loan needs a written agreement",
+    "Do not pay the owner's personal expenses from the company"
+   ],
+   "sheets": [
+    "Payout options",
+    "Tax comparison",
+    "Cash impact"
+   ],
+   "scenarios": [
+    "Take 1bn as salary vs dividend vs loan: tax and cash difference?"
+   ],
+   "priority": 1,
+   "brands": "OWNER",
+   "status": "planned"
+  },
+  {
+   "id": "H05",
+   "area": "Cash, funding & owner payouts",
+   "name": "Profit-sharing / partnership agreement calculator",
+   "why": "Capital, effort, profit split between partners written down before starting.",
+   "numbers": [
+    "capital shares",
+    "effort shares",
+    "profit rule",
+    "exit rule"
+   ],
+   "watch": [
+    "write the exit and loss rules before the first sale"
+   ],
+   "sheets": [
+    "Agreement terms",
+    "Profit split",
+    "Scenarios"
+   ],
+   "scenarios": [
+    "Project loses 200m: who bears how much?"
+   ],
+   "priority": 2,
+   "brands": "OWNER",
+   "status": "planned"
+  },
+  {
+   "id": "H06",
+   "area": "Cash, funding & owner payouts",
+   "name": "Equity & capital contribution register",
+   "why": "Who contributed what and when; needed for legal and tax records.",
+   "numbers": [
+    "capital contributions",
+    "dates",
+    "ownership %"
+   ],
+   "watch": [
+    "legal registration of changes (verify)"
+   ],
+   "sheets": [
+    "Contributions",
+    "Ownership"
+   ],
+   "scenarios": [
+    "Add a new partner at 20%: dilution?"
+   ],
+   "priority": 3,
+   "brands": "OWNER",
+   "status": "planned"
+  },
+  {
+   "id": "H07",
+   "area": "Cash, funding & owner payouts",
+   "name": "Personal finance & investment tracker (owner)",
+   "why": "Keep personal and company money separate; track net worth and investments.",
+   "numbers": [
+    "assets",
+    "liabilities",
+    "investments",
+    "income/expenses"
+   ],
+   "watch": [
+    "do not mix personal and company payments"
+   ],
+   "sheets": [
+    "Net worth",
+    "Investments",
+    "Budget"
+   ],
+   "scenarios": [
+    "Market falls 20%: effect on net worth?"
+   ],
+   "priority": 3,
+   "brands": "OWNER",
+   "status": "planned"
+  },
+  {
+   "id": "I01",
+   "area": "Reporting & control",
+   "name": "Monthly management report pack",
+   "why": "One workbook the director reads each month: P&L, cash, receivables, backlog by brand.",
+   "numbers": [
+    "revenue",
+    "gross margin",
+    "cash",
+    "AR/AP",
+    "backlog"
+   ],
+   "watch": [
+    "compare to budget and last year",
+    "Use the same definitions every month",
+    "Reconcile to bank and ledger before reporting",
+    "Show every large variance with its reason"
+   ],
+   "sheets": [
+    "P&L by brand",
+    "Cash",
+    "AR/AP",
+    "Backlog"
+   ],
+   "scenarios": [
+    "What changed most versus last month and why?"
+   ],
+   "priority": 1,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "I02",
+   "area": "Reporting & control",
+   "name": "Budget vs actual variance",
+   "why": "Explains differences, not just shows them.",
+   "numbers": [
+    "budget",
+    "actual",
+    "variance",
+    "reason"
+   ],
+   "watch": [
+    "flag variances over a set threshold"
+   ],
+   "sheets": [
+    "Budget",
+    "Actual",
+    "Variance"
+   ],
+   "scenarios": [
+    "Materials 12% over budget: price or quantity?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "I03",
+   "area": "Reporting & control",
+   "name": "KPI dashboard by department",
+   "why": "Sales, technical, site, factory, procurement, HR, accounting KPIs.",
+   "numbers": [
+    "KPI list",
+    "targets",
+    "actuals"
+   ],
+   "watch": [
+    "few KPIs per department"
+   ],
+   "sheets": [
+    "KPI list",
+    "Dashboard"
+   ],
+   "scenarios": [
+    "Which department missed its KPI and what did it cost?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "I04",
+   "area": "Reporting & control",
+   "name": "Approval limits & internal control checklist",
+   "why": "Who may approve what amount; separation between ordering, receiving and paying.",
+   "numbers": [
+    "approval limits",
+    "petty cash limit",
+    "signers"
+   ],
+   "watch": [
+    "fraud and error risk is highest in cash payments and returns"
+   ],
+   "sheets": [
+    "Limits",
+    "Checklist",
+    "Exceptions"
+   ],
+   "scenarios": [
+    "One person orders, receives and pays: what can go wrong?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "I05",
+   "area": "Reporting & control",
+   "name": "Month-end & year-end closing checklist",
+   "why": "A fixed routine prevents missing accruals and cut-off errors.",
+   "numbers": [
+    "accruals",
+    "prepayments",
+    "stock count",
+    "reconciliations"
+   ],
+   "watch": [
+    "cut-off of revenue and costs"
+   ],
+   "sheets": [
+    "Checklist",
+    "Reconciliations",
+    "Sign-off"
+   ],
+   "scenarios": [
+    "A December invoice booked in January: what changes?"
+   ],
+   "priority": 2,
+   "brands": "ALL",
+   "status": "planned"
+  },
+  {
+   "id": "I06",
+   "area": "Reporting & control",
+   "name": "Document retention & file naming",
+   "why": "Retention rules and consistent names make audits and searches fast.",
+   "numbers": [
+    "document types",
+    "retention years",
+    "naming rule"
+   ],
+   "watch": [
+    "(verify) legal retention periods"
+   ],
+   "sheets": [
+    "Retention table",
+    "Naming rule"
+   ],
+   "scenarios": [
+    "Can you find the 2024 contract with client X in 1 minute?"
+   ],
+   "priority": 3,
+   "brands": "ALL",
+   "status": "planned"
+  }
+ ]
+}

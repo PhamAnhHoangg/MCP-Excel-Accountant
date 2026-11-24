@@ -1,0 +1,12 @@
+__pycache__/
+.backups/
+.audit.jsonl
+*.pyc
+company_profile.json
+*.xlsx
+*.xlsm
+*.png
+*.jpg
+*.zip
+*.reg
+user-path-backup.txt

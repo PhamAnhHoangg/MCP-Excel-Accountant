@@ -1,0 +1,185 @@
+{
+ "checked_on": "2026-11-24",
+ "items": [
+  {
+   "id": "cit_standard",
+   "topic": "CIT standard rate",
+   "value": "20%",
+   "effective": "Law 67/2025/QH15, from 1 Oct 2025 (tax year 2025 on)",
+   "source": "https://taxsummaries.pwc.com/Vietnam/Corporate/Taxes-on-corporate-income",
+   "confidence": "verified (3+ sources)",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "cit_small",
+   "topic": "CIT rate for small revenue",
+   "value": "15% if prior-year revenue <= VND 3bn; 17% if VND 3-50bn",
+   "effective": "Law 67/2025; Decree 320/2025 (from 15 Dec 2025); Circular 20/2026",
+   "source": "https://www.vietnam-briefing.com/doing-business-guide/vietnam/taxation-and-accounting/country-wise-tax-structure/corporate-income-tax",
+   "confidence": "verified (3 sources) but conditions apply",
+   "note": "Not every enterprise qualifies; confirm with your tax adviser.",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "cit_new_sme",
+   "topic": "CIT exemption for newly established SMEs",
+   "value": "100% exemption for first 3 years (Decree 20/2026; Resolution 198/2025)",
+   "effective": "2026",
+   "source": "https://www.gvw.com/en/news/blog/detail/corporate-income-tax-cit-incentives-for-small-and-medium-sized-enterprises-smes-from-2026",
+   "confidence": "single source: VERIFY",
+   "note": "Eligibility conditions not confirmed.",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "cit_st_fund",
+   "topic": "Science & technology fund appropriation",
+   "value": "Up to 20% of annual taxable income (was 10%)",
+   "effective": "Law 67/2025",
+   "source": "https://www.roedl.com/en/insights/vietnam-new-corporate-income-tax-law/",
+   "confidence": "single source: VERIFY",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "vat_rates",
+   "topic": "VAT rates",
+   "value": "0% export; 5% listed items; 10% standard",
+   "effective": "Law 48/2024 from 1 Jul 2025",
+   "source": "https://www.vietnam-briefing.com/news/vietnam-new-vat-law-key-compliance-guidance.html/",
+   "confidence": "verified (3+ sources)",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "vat_reduction",
+   "topic": "Temporary VAT reduction",
+   "value": "2 percentage points off the 10% rate for eligible goods/services until end of 2026",
+   "effective": "until 31 Dec 2026",
+   "source": "https://www.vietnam-briefing.com/news/vietnam-vat-rates-and-applicability-in-2025-a-brief-guide.html/",
+   "confidence": "single source: VERIFY eligibility",
+   "note": "Check which of your products qualify before using 8%.",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "vat_export_refund",
+   "topic": "Export VAT refund conditions",
+   "value": "Seller must have declared and paid VAT on input invoices the buyer claims; Law 149/2025 changed refund rules from 1 Jan 2026",
+   "effective": "from 1 Jul 2025 / 1 Jan 2026",
+   "source": "https://www.ey.com/en_vn/technical/tax/tax-and-law-updates/amendments-to-the-law-on-value-added-tax",
+   "confidence": "verified (2 sources)",
+   "note": "Document requirements: confirm current list with customs/tax adviser.",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "vat_on_the_spot",
+   "topic": "0% VAT for on-the-spot import-export",
+   "value": "Allowed from 1 Jul 2025",
+   "effective": "1 Jul 2025",
+   "source": "https://www.vietnam-briefing.com/news/vietnam-new-vat-law-key-compliance-guidance.html/",
+   "confidence": "single source: VERIFY",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "pit_deductions",
+   "topic": "PIT personal and dependent deduction",
+   "value": "VND 15.5m/month personal; VND 6.2m/month per dependent",
+   "effective": "2026 tax year (Res. 110/2025)",
+   "source": "https://luatvietnam.vn/legal-news/vietnams-new-personal-income-tax-regime-what-foreign-workers-and-investors-need-to-know-4729-110522-article.html",
+   "confidence": "verified (4+ sources)",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "pit_brackets",
+   "topic": "PIT brackets (salary, residents)",
+   "value": "5 progressive brackets; 5% up to VND 10m/month taxable; top rate 35% per draft",
+   "effective": "Law 109/2025 (1 Jul 2026), salary rules from 2026 tax year",
+   "source": "https://vietnamnet.vn/en/vietnam-revises-personal-income-tax-law-easing-burden-for-millions-2471255.html",
+   "confidence": "bracket count & 5% first band verified; full table VERIFY",
+   "note": "Get the full bracket table from Decree 253/2026 or Circular 87/2026 before building PIT formulas.",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "pit_unused_leave",
+   "topic": "PIT on unused annual-leave payout",
+   "value": "Exempt",
+   "effective": "Law 109/2025",
+   "source": "https://www.pwc.com/vn/en/publications/2025/251212-new-personal-income-tax-law.pdf",
+   "confidence": "single source: VERIFY",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "ins_rates",
+   "topic": "Mandatory insurance + union fee",
+   "value": "Employer: SI 17.5%, HI 3%, UI 1%, union fee 2% = 23.5%. Employee: SI 8%, HI 1.5%, UI 1% = 10.5%",
+   "effective": "2026",
+   "source": "https://www.secondtalent.com/resources/vietnam-payroll-benefits-tax/",
+   "confidence": "verified (3 sources)",
+   "note": "Foreign employees have different rules (e.g. UI not applicable).",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "ins_caps",
+   "topic": "Insurance caps",
+   "value": "SI/HI/union cap = 20 x base salary: VND 50.6m/month from 1 Jul 2026 (was 46.8m). UI cap = 20 x regional minimum: VND 106.2m (Region I)",
+   "effective": "1 Jul 2026 (Decree 161/2026)",
+   "source": "https://support.remote.com/hc/en-us/articles/29318874191245-What-are-the-income-tax-and-salary-deduction-rates-in-Vietnam",
+   "confidence": "verified (3+ sources)",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "min_wage_2026",
+   "topic": "Regional minimum wage 2026",
+   "value": "Region I VND 5.31m, Region III 4.14m, Region IV 3.70m per month (+7.2%)",
+   "effective": "1 Jan 2026 (Decree 293/2025)",
+   "source": "https://www.bakermckenzie.com/en/insight/publications/2026/03/vietnam-change-to-the-regional-minimum-wage-in-2026",
+   "confidence": "verified (3 sources)",
+   "note": "Region II (4.73m) from a government news report; confirm your factory's region.",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "min_wage_2027",
+   "topic": "Regional minimum wage 2027",
+   "value": "Region I VND 5.7m per month (+7.3%)",
+   "effective": "1 Jan 2027 (Decree 399/2026)",
+   "source": "https://www.crowe.com/vn/news/regional-minimum-wages-applicable-from-1-january-2027",
+   "confidence": "verified (2 sources); other regions VERIFY",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "license_fee",
+   "topic": "Business licence fee",
+   "value": "Exempt from 1 Jan 2026",
+   "effective": "1 Jan 2026",
+   "source": "https://baonghean.vn/en/hang-loat-chinh-sach-moi-quan-trong-co-hieu-luc-tu-thang-1-2026-10317457.html",
+   "confidence": "single source (text truncated): VERIFY scope",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "einvoice_penalty",
+   "topic": "E-invoice timing penalties",
+   "value": "Issuing invoices at the wrong time is penalised under Decree 310/2025",
+   "effective": "16 Jan 2026",
+   "source": "https://baonghean.vn/en/hang-loat-chinh-sach-moi-quan-trong-co-hieu-luc-tu-thang-1-2026-10317457.html",
+   "confidence": "single source: VERIFY amounts",
+   "note": "",
+   "checked_on": "2026-11-24"
+  },
+  {
+   "id": "us_ad_cvd_extrusions",
+   "topic": "US AD/CVD case on aluminium extrusions (incl. Vietnam)",
+   "value": "US ITC final vote: industry not materially injured, so no AD duties ordered on extrusions from the 14 countries",
+   "effective": "Oct 2025 (verify year)",
+   "source": "https://vietnamnet.vn/en/us-not-impose-anti-dumping-duties-on-aluminum-extrusions-from-vietnam-2337653.html",
+   "confidence": "single source: VERIFY",
+   "note": "Other US tariffs (Section 232, reciprocal tariffs, fence/door HS codes) were NOT checked. Verify before pricing US orders.",
+   "checked_on": "2026-11-24"
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "excel-accounting",
+  "version": "0.8.4",
+  "description": "Excel MCP server and accounting skill: reconcile, aging, cost analysis, workbook audit",
+  "skills": "./skills",
+  "mcpServers": {
+    "excel-accounting": {
+      "command": "python3",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/server.py"],
+      "env": { "EXCEL_MCP_ROOT": "${HOME}/excel-workspace" }
+    }
+  }
+}
